@@ -1,4 +1,4 @@
-# desktop_shotcuts
+# desktop_shotcut
 
 Pre_requisites: python3 and gtk3
 
