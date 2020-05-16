@@ -1,6 +1,5 @@
 import gi
 import os
-import gi
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gio, GObject, Gtk, Pango
