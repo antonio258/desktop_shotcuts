@@ -1,5 +1,6 @@
 import gi
 import os
+import subprocess
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gio, GObject, Gtk, Pango
@@ -187,15 +188,15 @@ class MyWindow(Gtk.Window):
         Gtk.main()
 
     def on_button1_clicked(self, widget):
+
         try:
             print(app_used)
-            os.system("cp " + app_used + " ~/Área\ de\ trabalho")
+            cmd = 'echo $(xdg-user-dir DESKTOP)'
+            path = subprocess.check_output(cmd, text=True, shell=True)
+            path = ' \"' + path[:-1] + '\"'
+            os.system("cp " + app_used + path)
         except:
-            try:
-                os.system("cp " + app_used + " ~/Desktop")
-                print("2 tentativa")
-            except:
-                print("Failed to create shortcut")
+            print("Failed to create shortcut")
 
 
     def on_button2_clicked(self, widget):
